@@ -1,0 +1,23 @@
+<template name="errorPanel">
+  <ul class="list-group">
+    {{> errorList}}
+  </ul>
+</template>
+
+<template name="errorList">
+  <li class="list-group-item">
+    <div class="media" style="order:''">
+      <div class="media-left">
+        <i class="fa fa-exclamation-triangle fa-fw fa-2x text-muted"></i>
+      </div>
+      <div class="media-body">
+        {{#if nombre}}
+          <h3>{{nombre}}</h3>
+          <p>El servicio <span class="text-danger">no se encuentra disponible en este momento</span>, intentá de nuevo más tarde.</p>
+        {{else}}
+          <p>El servicio <span class="text-danger">no se encuentra disponible en este momento</span>, intentá de nuevo más tarde.</p>
+        {{/if}}
+      </div>
+    </div>
+  </li>
+</template>

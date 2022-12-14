@@ -1,0 +1,48 @@
+<template name="panel">
+  {{#with settings}}
+    {{#if visibility}}
+      <div class="col-lg-{{size}} panels-row-miargentina" data-id={{id}} aria-live="polite">
+        <div class="panel panel-default panel-border-{{status}} panel-nolink {{#if isEqual action.name 'close'}}pclose{{/if}} {{#unless service}}state-loading{{/unless}}">
+          {{> panelHeading }}
+          <div class="{{#if isEqual action.name 'collapse'}}panel-collapse collapse {{#unless action.currentStatus }}in{{/unless}}{{/if}}" role="tabpanel" id="{{id}}" aria-expanded="{{action.currentStatus}}">
+            <div class="panel-body {{#unless service}}p-t-4{{/unless}}">
+              {{#if service.response}}
+                {{> Template.dynamic template=bodyTemplate}}
+              {{/if}}
+              {{#if service.error}}
+                {{> errorPanel}}
+              {{/if}}
+            </div>
+            {{#if footer}}
+              <div class="panel-footer">
+                {{> Template.dynamic template=footer}}
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    {{/if}}
+  {{/with}}
+</template>
+
+<template name="panelHeading">
+  <div class="panel-heading {{#unless service}}p-t-2{{/unless}} {{#if action.currentStatus}}collapsed{{/if}} {{#if isEqual action.name 'close'}}panel-heading-close{{/if}}" data-toggle="{{#if isEqual action.name 'collapse'}}collapse{{/if}}" data-target="#{{id}}" aria-expanded="{{action.currentStatus}}" aria-controls="{{id}}">
+    {{#if service}}
+      <div class="row">
+        {{#if isEqual action.name 'volver'}}
+          <div class="col-xs-2 col-md-2">
+            {{> volver}}
+          </div>
+        {{/if}}
+        <div class="col-xs-10 col-md-10">
+          <h2 class="text-capitalize">{{name}}</h2>
+        </div>
+        {{#unless isEqual action.name 'volver'}}
+          <div class="col-xs-2 col-md-1 text-right">
+            <a class="btn-collapse"><i class="{{#if isEqual action.name 'close'}}fa fa-close{{/if}} {{#if isEqual action.name 'collapse'}}fa fa-chevron-up text-muted {{#if action.currentStatus}}collapseGira{{/if}}{{/if}}" data-id="{{id}}" data-action="{{action.name}}"></i></a>
+          </div>
+        {{/unless}}
+      </div>
+    {{/if}}
+  </div>
+</template>

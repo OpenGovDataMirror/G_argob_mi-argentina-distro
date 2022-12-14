@@ -1,0 +1,46 @@
+{
+  "public": {
+    "id": "http://project-id.gob.ar",
+    "miargentina": "http://project-mi-argentina.gob.ar",
+    "argentinagobar": "https://www.argentina.gob.ar",
+    "google": {
+      "tagManager": "",
+      "analytics": ""
+    }
+  },
+  "mailgun":{
+    "key": "key",
+    "domain": "domain",
+    "from": "MiArgentina"
+  },
+  "sentry":{
+    "key": "key",
+    "domain": "domain"
+  },
+  "oidc": {
+    "authEndpoint": "http://project-id.gob.ar/authorize/",
+    "tokenEndpoint": "http://project-id.gob.ar/token/",
+    "userinfoEndpoint": "http://project-id.gob.ar/userinfo/",
+    "clientId": "your-client-id",
+    "secret": "your-secret-id"
+  },
+  "apiGateway": {
+    "urlEndpoint": "http://URL-API",
+    "tokenEndpoint": "/auth/login",
+    "username": false,
+    "password": false
+  },
+  "webApp": {
+    "ambiente": "AMBIENTE DE EJECUCION DEL PROYECTO",
+    "session": {
+      "expire": {
+        "time": 50,
+        "attr": "minutes"
+      },
+      "revoke": {
+        "time": 5,
+        "attr": "hours"
+      }
+    }
+  }
+}
